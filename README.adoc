@@ -67,6 +67,9 @@ Dazu rufen Sie einfach nur
     gradle
 
 auf und finden die generierte Website unter http://localhost:8080 .
+
+image::src/docs/images/microsite.png[]
+
 Hinter diesem Aufruf verbergen sich ein paar als default gesetzt Tasks:
 
 `clean`::
