@@ -2,6 +2,8 @@ include::config.adoc[]
 ifndef::imagesdir[:imagesdir: images]
 
 :url-1: https://www.staticgen.com/
+:url-2: https://github.com/asciidoctor/jekyll-asciidoc
+:url-3: https://jbake.org/
 
 == Docs-As-Code - Alles unter einem Dach
 
@@ -38,7 +40,7 @@ Dokumentieren wir eine Bibliothek, die in mehreren Versionen produktiv im Einsat
 Nicht zuletzt benötigen wir eine Seitenübergreifende Suche.
 Strg+F reicht für eine einzelne Seite aus, für eine Dokumentations-Site benötigen wir etwas ausgefeilteres.
 
-=== Static Site Generator
+=== Static Site Generator (SSG)
 
 Sie können alle oben genannten Anforderungen mit einem Static Site Generator lösen.
 Die statische Seite bietet dabei den Vorteil, dass sie selbst keine Anforderungen an ein spezielles Hosting mitbringt.
@@ -49,16 +51,51 @@ Jedesmal, wenn Sie eine Änderung an Ihrer Site vornehmen, kümmert er sich um d
 
 Durch diese Neugenerierung bei jeder Änderung, die Sie von Ihrem Code ja kennen, wird ein dynamisches Blog zu einer statischen Site.
 
-Dieser Ansatz macht Ihre Dokumentation auch extrem schnell, denn statische Seiten benötigen beim Ausliefern an Ihrern Browser
+Dieser Ansatz macht Ihre Dokumentation auch extrem schnell, denn statische Seiten benötigen beim Ausliefern an den Browser keine Datenbankzugriffe oder andere Logik.
 
+=== Die Wahl eines SSG
 
-<<ssgs>>
+Auf https://staticgen.com[staticgen.com] sind ca. 250 Static Site Generators mit ein paar Attributen aufgeführt.
+Genannt ist die Sprache der Implementierung und die Beliebtheit in GithUb-Sternchen.
+Die Unterstützung des Markup-Typs ist nicht genannt, weshalb wir für Sie ein wenig recherchiert haben und zu der in <<ssgs>> gezeigten Auswahl gekommen sind.
+All diese SSGs unterstützen AsciiDoc und somit unseren Docs-as-Code Ansatz.
 
+==== HUGO
+
+Hugo ist in Go geschrieben und ist dadurch extrem schnell.
+Das trägt zur Beliebtheit dieses SSGs bei.
+AsciiDoctor wird als externes Tool eingebunden und hebt diesen Vorteil dadurch wieder auf
+
+====  Antora
+
+Antora ist nicht nur ein SSG, Antora bringt auch einen Git Client mit und kann somit Dokumentation aus verschiedenen Git repositories einsammeln und entsprechend der Versionstags in verschiedenen Versionen generieren.
+Es ist das jüngste Projekt von Dan Allen, dem Kopf hinter Asciidoctor.
+Damit ist es nicht verwunderlich, dass die AsciiDoc Unterstützung perfekt ist.
+Die Leistungsfähigkeit hat Antora schon durch den Einsatz bei größeren Open Source projekten bewiesen.
+Eine Landing Page oder ein Blog unterstützt es jedoch nicht, so dass man diese Elemente durch andere Werkzeuge bei Bedarf abdecken müsste.
+
+==== Jekyll
+
+Jekyll liegt in der Beliebtheit knapp vor HUGO (gemessen an den GitHub-Sternchen).
+Out of the Box wird MarkDown unterstützt.
+Das Asciidoctor-Projekt stellt {url-1}[ein Plugin] zur Verfügung mit dem Jekyll nach einer kleinen Konfiguration auch sehr gut AsciiDoc unterstützt.
+Durch ein vielfältiges Angebot an Themes kommen Sie mit Jekyll schnell zu guten Ergebnissen.
+So ist z.B. unsere WebSite https://docs-as-co.de[docs-as-co.de] mit Jekyll und AsciiDoc aufgebaut.
+Jekyll ist in Ruby geschrieben.
+
+==== jBake
+
+{url-3}[jBake] scheint eher der unbekannte Champion zu sein, weshalb wir im Folgenden unseren Ansatz mit jBake detaillierter vorstellen werden.
+jBake unterstützt AsciiDoc direkt, ist als Command-Line-Tool, Maven und Gradle Plugin und als Library verfügbar.
+Durch die Unterstützung verschiedener Template-Engines (Freemarker, Groovy, Thymeleaf and Jade) ist jBake sehr flexibel.
 
 [[ssgs]]
-.Ausgewählte Static Site Generators (Quelle: {url-1}[staticgen.com]
+.Ausgewählte Static Site Generators (Quelle: {url-2}[staticgen.com]
 include::ppt/slides.pptx.ad[tags=overview]
 
+=== Warum jBake?
+
+Die direkte Integration als Gradle Plugin, Java als Implementierungssprache und der Einsatz von Groovy
 
 == Fazit
 
