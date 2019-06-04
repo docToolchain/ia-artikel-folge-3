@@ -1,0 +1,90 @@
+:imagesdir: .
+
+= image:src/docs/images/hhgdac-logo.png[] Docs-as-Code: (technische) Dokumentation in _gut_
+
+[small]
+--
+Eine Folge von Artikeln für https://www.informatik-aktuell.de/[Informatik-Aktuell]
+von https://rdmueller.github.io/[R.D. Müller] und https://gernotstarke.de[G. Starke]
+--
+
+Wir möchten Dokumentation in der Softwareentwicklung von vielerlei typischen Schmerzen befreien:
+
+* Wir _generieren_ Dokumente, beispielsweise Architektur-, Schnittstellen- oder Betriebsdokumentation.
+
+* Wir arbeiten dabei DRY, modular und flexibel.
+
+* Wir erzeugen _zielgruppenspezifische_ Ergebnisse, u.a. in HTML, pdf, docx oder Confluence.
+
+
+== Voraussetzungen
+
+* https://gradle.org/install[Gradle] installiert zu haben, hilft ungemein... Wir bevorzugen die Installation über http://sdkman.io/[sdkman], den großartigen Package-Manager.
+* Eine Shell/Kommandozeile/Terminal.
+
+Alternativ können Sie das Repository auch in gitpod.io öffnen, dann startet eine web basierte Entwicklungsumgebung:
+
+image:https://gitpod.io/button/open-in-gitpod.svg[link="https://gitpod.io#https://github.com/docToolchain/ia-artikel-folge-3", title="In Gitpod öffnen"]
+
+
+== Einführung
+
+Wir haben einen Wrapper für Gradle zugefügt - das macht den Einstieg für Sie noch einfacher.
+Da wir diesmal docToolchain verwenden, wird die HTML-Dokumentation mit
+
+    ./gradlew generateHTML
+
+und die PDF-Dokumentation mit
+
+    ./gradlew generatePDF
+
+erzeugt.
+
+
+Falls Sie Gradle bereits installiert haben, geht's auch so:
+
+    gradle generateHTML
+
+Das Ergebnis, die Datei `Part-3-DocToolchain.html`, wird ins Verzeichnis
+`./build/asciidoc/html5` generiert, und entspricht dem Artikel aus der Informatik Aktuell.
+
+== Schaubilder
+
+Für die Schaubilder haben wir diesmal PowerPoint-Slides verwendet.
+Diese finden sich als versionierte Images im Verzeichnis TODO.
+Sind Sie auf einem Windows-System unterwegs können Sie die Schaubilder ganz leicht in PowerPoint (Datei `src/docs/slides.pptx`) ändern und durch den Befehl
+
+    gradle exportPPT
+
+frisch exportieren.
+Dieser Task ist auf Windows beschränkt, da hier PowerPoint ferngesteuert wird.
+
+== JBake
+
+Und natürlich können Sie dieses Beispiel auch als Website generieren.
+Dazu rufen Sie einfach nur
+
+    gradle
+
+auf und finden die generierte Website unter http://localhost:8080 .
+Hinter diesem Aufruf verbergen sich ein paar als default gesetzt Tasks:
+
+`clean`::
+alles bisher generierte wird gelöscht und von vorne angefangen
+`copyImages`::
+die Bilder der verschiedenen Artikel werden an die richtige Stelle verschoben
+`bake`::
+jBake baut die Micro-Site zusammen
+`htmlSanityCheck`::
+die generierte Micro-Site wird auf Fehler überprüft
+`copyReports`::
+der daraus entstandene Test-Report wird in den Verzeichnisbaum der Micro-Site kopiert.
+`bakePreview`::
+jBake startet einen kleinen Webserver um das Ergebnis unter http://localhost:8080 zur Verfügung zu stellen.
+
+Viel Spass beim Experimentieren!
+
+Gernot & Ralf
+
+https://docs-as-co.de
+
