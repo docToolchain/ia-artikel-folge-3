@@ -1,3 +1,9 @@
+[submodule "ia-artikel-folge-1"]
+	path = ia-artikel-folge-1
+	url = https://github.com/docToolchain/ia-artikel-folge-1.git
+[submodule "ia-artikel-folge-2"]
+	path = ia-artikel-folge-2
+	url = https://github.com/docToolchain/ia-artikel-folge-2.git
 [submodule "docToolchain"]
 	path = docToolchain
 	url = https://github.com/docToolchain/docToolchain.git
