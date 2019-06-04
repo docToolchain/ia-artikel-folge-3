@@ -1,0 +1,10 @@
+:jbake-type: page_toc
+:jbake-title: Die Werkzeuge
+:jbake-status: published
+
+:imagesdir: ../images
+
+:toc: left
+
+include::../../../../../ia-artikel-folge-2/src/docs/Part-2-DocToolchain.adoc[]
+

@@ -1,0 +1,11 @@
+:doctype: book
+:icons: font
+:numbered : true
+:source-highlighter: coderay
+:imagesdir: images
+:figure-caption: Abbildung
+:table-caption: Tabelle
+:example-caption: Beispiel
+:listing-caption: Listing
+:xrefstyle: short
+:sectanchors:

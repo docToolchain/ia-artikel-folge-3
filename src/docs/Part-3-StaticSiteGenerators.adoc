@@ -1,0 +1,76 @@
+include::config.adoc[]
+ifndef::imagesdir[:imagesdir: images]
+
+:url-1: https://www.staticgen.com/
+
+== Docs-As-Code - Alles unter einem Dach
+
+In der ersten Folge dieser Artikelreihe haben wir Ihnen den Docs-as-Code Ansatz erläutert.
+In der zweiten Folge haben wir Ihnen gezeigt, wie Sie durch Automatisierung weitere Build-Schritte erzeugen, die Ihnen die Dokumentation erleichtern.
+
+Dabei lag unser Fokus immer auf einem einzelnen Dokument.
+Die Dokumentation Ihres Teams wird hingegen aus einer Vielzahl unterschiedlicher Dokumente bestehen.
+Die offentsichtlichen sind die Architekturdokumentation, ein Benutzerhandbuch und ein Entwicklerhandbuch.
+Betrachtet man andere Systeme, so spielt auch immer eine Landingpage als Einstieg in das System und ein Blog für aktuelle Informationen eine große Rolle.
+
+Ein Menü zur einfachen Navigation bildet scchliesslich die Klammer um all diese Dokumente (siehe <<diagramm1>>).
+
+In diesem Artikel zeigen wir Ihnen, wie Sie mit Hilfe eines Static Site Generators  alle benötigten Dokumente unter ein Dach bringen und eine Micro-Site für Ihr System bauen.
+
+[[diagramm1]]
+.Alle Dokumente unter einem Dach
+include::ppt/slides.pptx.ad[tags=components]
+
+=== Anforderungen
+
+Bevor wir uns der eigentlichen Lösung zuwenden, sollten wir zumindest grob die Anforderungen skizziert haben.
+
+Die meisten oben aufgeführten Dokumente können wir mit dem schon besprochenen Docs-as-Code Ansatz prima erzeugen. Wir benötigen also ein System, welches den Docs-as-Code Ansatz mit AsciiDoc unterstützt.
+
+Beim Schreiben mit AsciiDoc steht der Content im Vordergrund, nicht das Layout und die Optik.
+Eine Landingpage muss jedoch optisch ansprechend aufgebaut sein.
+Das System muss also z.B. reines HTML für möglichst viel Freiheit bei der Gestaltung einer Landingpage erlauben.
+
+Und auch ein Blog hat spezielle Anforderungen. So benötigt ein Blog nicht nur die Darstellung der einzelnen Artikel (was in AsciiDoc sehr gut geht), sondern auch eine Auflistung aller Artikel nach Datum oder nach Kategorien/Tags.
+
+Dokumentieren wir eine Bibliothek, die in mehreren Versionen produktiv im Einsatz ist, so muss auch unsere Dokumentation dem Rechung tragen und in allen unterstützten Versionen vorliegen.
+
+Nicht zuletzt benötigen wir eine Seitenübergreifende Suche.
+Strg+F reicht für eine einzelne Seite aus, für eine Dokumentations-Site benötigen wir etwas ausgefeilteres.
+
+=== Static Site Generator
+
+Sie können alle oben genannten Anforderungen mit einem Static Site Generator lösen.
+Die statische Seite bietet dabei den Vorteil, dass sie selbst keine Anforderungen an ein spezielles Hosting mitbringt.
+Sie besteht einfach nur aus statischen HTML Seiten, die sogar aus einem lokalen Verzeichnis aufgerufen werden können.
+
+Der Generator kümmer sich dabei um die "Dynamik".
+Jedesmal, wenn Sie eine Änderung an Ihrer Site vornehmen, kümmert er sich um das korrekte Einhängen Ihrer Dokumente in die Navigation, Verknüpfung von Seitenelementen (z.B. ein kleines Autorenprofil für jeden Blog-Artikel) und die Neugenerierung von Übersichtsseiten.
+
+Durch diese Neugenerierung bei jeder Änderung, die Sie von Ihrem Code ja kennen, wird ein dynamisches Blog zu einer statischen Site.
+
+Dieser Ansatz macht Ihre Dokumentation auch extrem schnell, denn statische Seiten benötigen beim Ausliefern an Ihrern Browser
+
+
+<<ssgs>>
+
+
+[[ssgs]]
+.Ausgewählte Static Site Generators (Quelle: {url-1}[staticgen.com]
+include::ppt/slides.pptx.ad[tags=overview]
+
+
+== Fazit
+
+[austauschen]
+----
+Nachdem wir Ihnen im https://www.informatik-aktuell.de/management-und-recht/projektmanagement/docs-as-code-die-grundlagen.html[ersten Artikel] unserer Docs-as-Code Reihe zeigten, wie Sie mit AsciiDoc und https://arc42.org[arc42] den Docs-as-Code Ansatz für Ihre Architekturdokumentation umsetzen können, haben wir Ihnen in dieser Folge einen Einblick gegeben, wie Sie aus diesem Ansatz noch mehr machen können, indem Sie weitere Schritte der Dokumentationserstellung in Ihren Build integrieren.
+
+Das Open-Source Tool docToolchain unterstützt Sie dabei und bietet die oben genannten Build-Schritte als vorgefertigte Tasks.
+
+In der nächten Folge zeigen wir Ihnen, wie Sie verschiedene Dokumentationsartefakte zu einer Website zusammenführen und somit alles unter ein Dach bringen.
+
+Noch mehr Informationen finden Sie in der Zwischenzeit auch auf https://docs-as-co.de[Docs-as-Co.de], diesen Artikel als Docs-as-Code Version auf https://github.com/docToolchain/ia-artikel-folge-2[github.com/docToolchain] und die Dokumentation von docToolchain auf https://doctoolchain.github.io/docToolchain/[doctoolchain.github.io].
+
+In diesem Sinne viel Erfolg mit Docs-as-Code.
+----

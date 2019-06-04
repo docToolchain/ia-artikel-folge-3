@@ -1,0 +1,9 @@
+:jbake-type: page_toc
+:jbake-title: Alles unter einem Dach
+:jbake-status: published
+
+:imagesdir: ../images
+
+:toc: left
+
+include::../../../Part-3-StaticSiteGenerators.adoc[]
