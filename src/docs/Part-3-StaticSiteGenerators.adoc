@@ -43,10 +43,10 @@ Strg+F reicht für eine einzelne Seite aus, für eine Dokumentations-Site benöt
 === Static Site Generator (SSG)
 
 Sie können alle oben genannten Anforderungen mit einem Static Site Generator lösen.
-Die statische Seite bietet dabei den Vorteil, dass sie selbst keine Anforderungen an ein spezielles Hosting mitbringt.
+Die statische Seite bietet dabei den Vorteil, dass sie selbst keine Anforderungen an ein spezielles Hosting mitbringt und durch die fehlende Dynamik sehr schnell ist.
 Sie besteht einfach nur aus statischen HTML Seiten, die sogar aus einem lokalen Verzeichnis aufgerufen werden können.
 
-Der Generator kümmer sich dabei um die "Dynamik".
+Der Generator kümmert sich dabei um die "Dynamik".
 Jedesmal, wenn Sie eine Änderung an Ihrer Site vornehmen, kümmert er sich um das korrekte Einhängen Ihrer Dokumente in die Navigation, Verknüpfung von Seitenelementen (z.B. ein kleines Autorenprofil für jeden Blog-Artikel) und die Neugenerierung von Übersichtsseiten.
 
 Durch diese Neugenerierung bei jeder Änderung, die Sie von Ihrem Code ja kennen, wird ein dynamisches Blog zu einer statischen Site.
@@ -64,15 +64,17 @@ All diese SSGs unterstützen AsciiDoc und somit unseren Docs-as-Code Ansatz.
 
 Hugo ist in Go geschrieben und ist dadurch extrem schnell.
 Das trägt zur Beliebtheit dieses SSGs bei.
-AsciiDoctor wird als externes Tool eingebunden und hebt diesen Vorteil dadurch wieder auf
+AsciiDoctor wird als externes Tool eingebunden und hebt diesen Vorteil zum Teil dadurch wieder auf.
+Für ein reines Java-Projekt ist Hugo mit seiner Implementierung in Go allerdings auch eher der Exot.
 
 ====  Antora
 
-Antora ist nicht nur ein SSG, Antora bringt auch einen Git Client mit und kann somit Dokumentation aus verschiedenen Git repositories einsammeln und entsprechend der Versionstags in verschiedenen Versionen generieren.
+Antora ist nicht nur ein SSG, Antora bringt auch einen Git Client mit und kann somit Dokumentation aus verschiedenen Git-Repositories automatisch einsammeln und entsprechend der Versionstags in verschiedenen Versionen generieren.
 Es ist das jüngste Projekt von Dan Allen, dem Kopf hinter Asciidoctor.
 Damit ist es nicht verwunderlich, dass die AsciiDoc Unterstützung perfekt ist.
 Die Leistungsfähigkeit hat Antora schon durch den Einsatz bei größeren Open Source projekten bewiesen.
 Eine Landing Page oder ein Blog unterstützt es jedoch nicht, so dass man diese Elemente durch andere Werkzeuge bei Bedarf abdecken müsste.
+Antora ist mit Node.js realisiert.
 
 ==== Jekyll
 
@@ -81,19 +83,41 @@ Out of the Box wird MarkDown unterstützt.
 Das Asciidoctor-Projekt stellt {url-1}[ein Plugin] zur Verfügung mit dem Jekyll nach einer kleinen Konfiguration auch sehr gut AsciiDoc unterstützt.
 Durch ein vielfältiges Angebot an Themes kommen Sie mit Jekyll schnell zu guten Ergebnissen.
 So ist z.B. unsere WebSite https://docs-as-co.de[docs-as-co.de] mit Jekyll und AsciiDoc aufgebaut.
-Jekyll ist in Ruby geschrieben.
+Jekyll ist, wie Asciidoctor, in Ruby geschrieben.
 
 ==== jBake
 
 {url-3}[jBake] scheint eher der unbekannte Champion zu sein, weshalb wir im Folgenden unseren Ansatz mit jBake detaillierter vorstellen werden.
 jBake unterstützt AsciiDoc direkt, ist als Command-Line-Tool, Maven und Gradle Plugin und als Library verfügbar.
 Durch die Unterstützung verschiedener Template-Engines (Freemarker, Groovy, Thymeleaf and Jade) ist jBake sehr flexibel.
+Für ein Java-Projekt ist der größte Vorteil wohl die Implementierung in Java und die perfekte Integration mit Maven und Gradle.
 
 [[ssgs]]
 .Ausgewählte Static Site Generators (Quelle: {url-2}[staticgen.com]
 include::ppt/slides.pptx.ad[tags=overview]
 
-=== Warum jBake?
+=== Umsetzung einer Site mit jBake
+
+In den ersten Teilen haben wir als Build-Tool schon Gradle verwendet.
+Da jBake über eine entsprechende Gradle Integration verfügt, ist die erste Umsetzung der Site trivial:
+
+[source,groovy]
+----
+include::../../build.gradle[tags=jbakeplugin;jbakeconfig]
+----
+
+Auch hier verwenden wir wieder Asciidoctor mit dem Diagram-Plugin um PlantUML für Diagramme verwenden zu können.
+
+Wenn Sie die ersten Teile der Folge aufmerksam verfolgt haben, wird Ihnen auffallen, dass wir in dieser Konfiguration `src/site` und nicht `src/docs` referenzieren.
+In der Praxis hat sich gezeigt, dass es durchaus Sinn macht, die Site von der eigentlichen Dokumentation zu trennen.
+So erstellen Sie z.B. Ihre arc42 Dokumentation klassisch mit einem Master-Template, welches alle Unterkapitel per `include` referenziert.
+Das Ergebnis ist ein großes Dokument.
+
+In der Site funktioniert die Navigation jedoch besser, wenn Sie jedes Kapitel in der Top-Level-Navigation einzeln aufführen.
+Über die Trennung von Dokumentation (`src/docs`) und Site (`src/site`) ist das kein Problem.
+Sie legen einfach - ähnlich wie das arc42 Master-Template - für jede Seite ein Dokument an, welches auf beliebige Fragmente Ihrer Dokumentation per `include` verweist.
+Durch diesen Ansatz bauen Sie die Struktur Ihrer Site getrennt von der Dokumentation auf und bekommen mehr flexibilität.
+
 
 Die direkte Integration als Gradle Plugin, Java als Implementierungssprache und der Einsatz von Groovy
 
@@ -111,3 +135,4 @@ Noch mehr Informationen finden Sie in der Zwischenzeit auch auf https://docs-as-
 
 In diesem Sinne viel Erfolg mit Docs-as-Code.
 ----
+
