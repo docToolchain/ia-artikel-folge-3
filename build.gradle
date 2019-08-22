@@ -43,18 +43,23 @@ apply plugin:'java'
 task copyImages1(type:Copy) {
     from('ia-artikel-folge-1/src/docs/images') {}
     from('ia-artikel-folge-2/src/docs/images') {}
-    into('build/docs/html5/site/images')
+    into('build/docs/html5/site/artikel/images')
+    doLast { println "images copied"}
 }
 task copyImages2(type:Copy) {
     from('src/docs/images'){}
     into('build/docs/html5/site/artikel/images')
+    doLast { println "images copied"}
 }
 task copyReports(type:Copy) {
     from('build/docs/report'){}
     into('build/docs/html5/site/tests/report')
+    doLast { println "reports copied"}
 }
 task copyResources(
     dependsOn: [copyImages1, copyImages2]
-) {}
+) {
+    doLast { println "resources copied"}
+}
 
-defaultTasks 'clean', 'copyResources', 'bake', 'htmlSanityCheck', 'copyReports', 'bakePreview'
+defaultTasks 'copyResources', 'bake', 'htmlSanityCheck', 'copyReports', 'bakePreview'

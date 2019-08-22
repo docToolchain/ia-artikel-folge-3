@@ -61,6 +61,15 @@ published_pages.each { page ->
                 <% } %>
               <% } %>
           </ul>
+            <!-- tag::search[] -->
+            <form class="navbar-form navbar-right" action="https://google.de/search">
+                <div class="form-group">
+                    <input type="hidden" name="q" value="site:docs-as-co.de">
+                    <input type="text" name="q" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <!-- end::search[] -->
         </div><!--/.nav-collapse -->
       </div>
     </div>

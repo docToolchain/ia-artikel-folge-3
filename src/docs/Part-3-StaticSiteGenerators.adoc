@@ -143,9 +143,10 @@ Wir können nun pro Seite wählen, ob wir einen TOC darstellen wollen oder nicht
 
 AsciiDoc ist prima für technische Dokumentation.
 Für eine ansprechende Landingpage, die einen guten ersten Eindruck unseres Projekts vermitteln soll, gehen wir dann doch auf Plain-HTML zurück.
-Durch die VErwendung von Bootstrap fällt es leicht eine ansprechende Seite aufzubauen, die auch responsive ist und sich somit mobil wie auch auf dem Desktop als Aushängeschild eignet.
+Durch die Verwendung von Bootstrap fällt es leicht eine ansprechende Seite aufzubauen, die auch responsive ist und sich somit mobil wie auch auf dem Desktop als Aushängeschild eignet.
+Twitter Bootstrap hat an dieser Stelle den Vorteil des mittlerweile hohen Bekanntheitsgrads.
 
-image::landingpage.png[]
+image::microsite.png[]
 
 === HTML Sanity Check
 
@@ -167,24 +168,46 @@ Das ist nicht ganz perfekt, erfüllt aber durcchaus seinen Zweck.
 
 Zu guter Letzt wollen wir auch den Leser mit einzelnen Nachrichtenbeiträgen im Stil eines Blog auf dem Laufenden halten.
 Hier bringt jBake die nötige Funktionalität gleich mit.
+Neue Artikel werden einfach als AsciiDoc mit einem Header für die Meta-Daten versehen und in das Verzeichnis `site/news` legen.
+Über das Attribut `:jbake-tags:` vergeben Sie für jeden Blog-Eintrag Tags und jBake erstellt automatisch entsprechende Übersichtsseiten.
+
+.Blog-Header
+[source,adoc]
+----
+include::../../src/site/content/news/2019-05-02.adoc[tags=header]
+----
 
 === Suche
 
+In größeren AsciiDoc-Dokumenten lassen sich gut über die Suche des Browsers (strg+F) Begriffe finden.
+Wird das Dokument über mehrere Navigationselemente verteilt und gibt es mehrere solcher Dokumente, ist strg+F nicht mehr ausreichend.
+Über tools wie https://lunrjs.com[Lunr.js] lässt sich auch auf einem statischen System eine Suche per JavaScript auf dem Client implementieren.
+Allerdings erzeugen Sie damit eine Dokumentations-Insel.
+Gerade im Unternehmenskontext möchten Sie Ihre Dokumentation auch über die zentrale Suche finden können.
+Die meisten Suchmaschinen unterstützen zu diesem Zweck eine Einschränkung der Suche auf die Domain der Website.
 
-Die direkte Integration als Gradle Plugin, Java als Implementierungssprache und der Einsatz von Groovy
+Bei Google funtioniert das über den Parameter `site` im Suchfeld.
+So findet die Suchanfrage https://google.de/search?q=site%3Adocs-as-co.de+AsciiDoc[site:docs-as-co.de AsciiDoc] alle entsprechenden Dokumente auf unserer Website.
+
+Somit kann eine Suche mit einem einfachen Form-Tag in Ihre Microsite eingebunden werden.
+
+.Form-Tag zum Einbinden einer externen Suche
+[source,HTML,indent=0]
+----
+include::../../src/site/templates/menu.gsp[tags=search]
+----
+
+Das vollständige Beispiel finden Sie wieder in unserem https://github.com/docToolchain/ia-artikel-folge-3[Github-Repository].
 
 == Fazit
 
-[austauschen]
-----
-Nachdem wir Ihnen im https://www.informatik-aktuell.de/management-und-recht/projektmanagement/docs-as-code-die-grundlagen.html[ersten Artikel] unserer Docs-as-Code Reihe zeigten, wie Sie mit AsciiDoc und https://arc42.org[arc42] den Docs-as-Code Ansatz für Ihre Architekturdokumentation umsetzen können, haben wir Ihnen in dieser Folge einen Einblick gegeben, wie Sie aus diesem Ansatz noch mehr machen können, indem Sie weitere Schritte der Dokumentationserstellung in Ihren Build integrieren.
+Nachdem Sie im ersten Teil die Grundlagen und im zweiten die Werkzeuge des Docs-as-Code Ansatzes kennengelehrnt haben, wissen Sie nun auch, wie sie die verschiedenen Teile Ihrer Dokumentation mit jBake zusammenführen können.
+jBake hat dabei unter Beweis gestellt, dass er sich hinter anderen Static-Site-Generatoren nicht zu verstecken braucht und den Ansprüchen geachsen ist.
+Im Gegenteil - in einem Java-Projekt bietet jBake eine pefekte Integration in Ihren Build.
 
-Das Open-Source Tool docToolchain unterstützt Sie dabei und bietet die oben genannten Build-Schritte als vorgefertigte Tasks.
+Noch mehr Informationen finden Sie auch auf https://docs-as-co.de[Docs-as-Co.de].
+In unserem https://github.com/docToolchain/ia-artikel-folge-3[Beispiel-Repository] finden Sie diesen Artikel (zusammen mit den beiden ersten) auch als Microsite umgesetzt.
 
-In der nächten Folge zeigen wir Ihnen, wie Sie verschiedene Dokumentationsartefakte zu einer Website zusammenführen und somit alles unter ein Dach bringen.
+In diesem Sinne viel Erfolg mit dem Docs-as-Code Ansatz!
 
-Noch mehr Informationen finden Sie in der Zwischenzeit auch auf https://docs-as-co.de[Docs-as-Co.de], diesen Artikel als Docs-as-Code Version auf https://github.com/docToolchain/ia-artikel-folge-2[github.com/docToolchain] und die Dokumentation von docToolchain auf https://doctoolchain.github.io/docToolchain/[doctoolchain.github.io].
-
-In diesem Sinne viel Erfolg mit Docs-as-Code.
-----
 

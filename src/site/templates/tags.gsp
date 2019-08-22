@@ -11,7 +11,7 @@
     </div>
 
     <!--<ul>-->
-    <% def last_month = true; %>
+    <% def last_month = null; %>
     <% tag_posts.each { post -> %>
     <% if (last_month) { %>
     <% if (new java.text.SimpleDateFormat("MMMM yyyy", Locale.ENGLISH).format(post.date) != last_month) { %>
