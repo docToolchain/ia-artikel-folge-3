@@ -2,7 +2,7 @@
 :jbake-type: post
 :jbake-date: 2019-04-02
 :jbake-status: published
-:page-tags: [asciidoc, documentation]
+:jbake-tags: asciidoc, documentation
 
 
 image::https://www.informatik-aktuell.de/fileadmin/_processed_/0/0/csm_720-AdobeStock_243560609_b5f07fdc25.jpg[float=left]

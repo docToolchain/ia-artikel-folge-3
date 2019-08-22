@@ -166,7 +166,7 @@ Das ist nicht ganz perfekt, erfüllt aber durcchaus seinen Zweck.
 === Blog
 
 Zu guter Letzt wollen wir auch den Leser mit einzelnen Nachrichtenbeiträgen im Stil eines Blog auf dem Laufenden halten.
-Hier bringt jBake die nötige Funktionalität
+Hier bringt jBake die nötige Funktionalität gleich mit.
 
 === Suche
 
