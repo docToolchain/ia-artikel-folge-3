@@ -118,6 +118,58 @@ In der Site funktioniert die Navigation jedoch besser, wenn Sie jedes Kapitel in
 Sie legen einfach - ähnlich wie das arc42 Master-Template - für jede Seite ein Dokument an, welches auf beliebige Fragmente Ihrer Dokumentation per `include` verweist.
 Durch diesen Ansatz bauen Sie die Struktur Ihrer Site getrennt von der Dokumentation auf und bekommen mehr flexibilität.
 
+=== Navigation
+
+jBake kann sich über `./gradlew bakeInit` selbst initialisieren und so das benötigte `site`-Verzeichnis mit Templates etc. anlegen.
+jBake unterstützt dabei verschiedene Template-Engines.
+Wir verwenden in dem Beispiel Groovy als Engine, da wir ja schon in der Java-Welt sind und auch in Gradle Groovy verwenden.
+Das Original-Template baut die Site-Navigation in HTML mit Twitter-Bootstrap auf.
+Da dies schnell unübersichtlich wird, haben wir das Template dank Groovy so umgeschrieben, daß die Navigation über eine Map definiert wird:
+
+.Das Navigationsmenu
+[source, groovy]
+----
+include::../../src/site/templates/menu.gsp[tags=map]
+----
+
+=== Table of Contents (TOC)
+
+Das CSS von AsciiDoc verträgt sich sehr gut mit den Styles von Twitter Bootstrap.
+Allerdings sieht jBake keinen Table of Contents für die AsciiDoc-Seiten vor, so daß wir auch hier eine Anpassung vorgenommen haben.
+Schnell sind dem `header.gsp`-Template ein paar CSS-Styles hinzugefügt und ein neues `page_toc.gsp`-Template angelegt.
+Wir können nun pro Seite wählen, ob wir einen TOC darstellen wollen oder nicht.
+
+=== Landing Page
+
+AsciiDoc ist prima für technische Dokumentation.
+Für eine ansprechende Landingpage, die einen guten ersten Eindruck unseres Projekts vermitteln soll, gehen wir dann doch auf Plain-HTML zurück.
+Durch die VErwendung von Bootstrap fällt es leicht eine ansprechende Seite aufzubauen, die auch responsive ist und sich somit mobil wie auch auf dem Desktop als Aushängeschild eignet.
+
+image::landingpage.png[]
+
+=== HTML Sanity Check
+
+Was machen wir jetzt mit unsere HTML Sanity Check?
+Er testet die fertige Seite und kann somit schlecht direkt von jBake in die Seite eingebettet werden.
+
+Für ejde Seite haben wir die Wahl der Tempalte-Engine in dem wir die Dateiendung wählen.
+Für den Test-Report gehen wir auch hier wieder auf HTML und embedden den Report, der erst nach der eigentlichen Site generiert wird, per iFrame.
+
+.tests.html
+[source,HTML]
+----
+include::../../src/site/content/tests/index.html[]
+----
+
+Das ist nicht ganz perfekt, erfüllt aber durcchaus seinen Zweck.
+
+=== Blog
+
+Zu guter Letzt wollen wir auch den Leser mit einzelnen Nachrichtenbeiträgen im Stil eines Blog auf dem Laufenden halten.
+Hier bringt jBake die nötige Funktionalität
+
+=== Suche
+
 
 Die direkte Integration als Gradle Plugin, Java als Implementierungssprache und der Einsatz von Groovy
 

@@ -6,4 +6,4 @@
 
 :toc: left
 
-include::../../../Part-3-StaticSiteGenerators.adoc[]
+include::../../../docs/Part-3-StaticSiteGenerators.adoc[]

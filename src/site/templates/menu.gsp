@@ -1,4 +1,6 @@
-<% def nav = [
+<%
+    //tag::map[]
+    def nav = [
         title: 'Docs-as-Code',
         entries: [
           'Artikel': [
@@ -11,6 +13,7 @@
           'About': 'about/',
         ]
     ]
+    //end::map[]
 /**
 def nav = [
         title: 'Docs-as-Co.de',
