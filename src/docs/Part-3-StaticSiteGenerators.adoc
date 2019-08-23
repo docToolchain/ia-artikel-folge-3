@@ -7,15 +7,15 @@ ifndef::imagesdir[:imagesdir: images]
 
 == Docs-As-Code - Alles unter einem Dach
 
-In der ersten Folge dieser Artikelreihe haben wir Ihnen den Docs-as-Code Ansatz erläutert.
-In der zweiten Folge haben wir Ihnen gezeigt, wie Sie durch Automatisierung weitere Build-Schritte erzeugen, die Ihnen die Dokumentation erleichtern.
+In der https://www.informatik-aktuell.de/entwicklung/methoden/docs-as-code-die-grundlagen.html[ersten Folge] dieser Artikelreihe haben wir Ihnen den Docs-as-Code Ansatz erläutert.
+In der https://www.informatik-aktuell.de/entwicklung/methoden/docs-as-code-die-werkzeuge.html[zweiten Folge] haben wir Ihnen gezeigt, wie Sie durch Automatisierung weitere Build-Schritte erzeugen, die Ihnen die Dokumentation erleichtern.
 
 Dabei lag unser Fokus immer auf einem einzelnen Dokument.
 Die Dokumentation Ihres Teams wird hingegen aus einer Vielzahl unterschiedlicher Dokumente bestehen.
 Die offentsichtlichen sind die Architekturdokumentation, ein Benutzerhandbuch und ein Entwicklerhandbuch.
 Betrachtet man andere Systeme, so spielt auch immer eine Landingpage als Einstieg in das System und ein Blog für aktuelle Informationen eine große Rolle.
 
-Ein Menü zur einfachen Navigation bildet scchliesslich die Klammer um all diese Dokumente (siehe <<diagramm1>>).
+Ein Menü zur einfachen Navigation bildet schliesslich die Klammer um all diese Dokumente (siehe <<diagramm1>>).
 
 In diesem Artikel zeigen wir Ihnen, wie Sie mit Hilfe eines Static Site Generators  alle benötigten Dokumente unter ein Dach bringen und eine Micro-Site für Ihr System bauen.
 
@@ -37,7 +37,7 @@ Und auch ein Blog hat spezielle Anforderungen. So benötigt ein Blog nicht nur d
 
 Dokumentieren wir eine Bibliothek, die in mehreren Versionen produktiv im Einsatz ist, so muss auch unsere Dokumentation dem Rechung tragen und in allen unterstützten Versionen vorliegen.
 
-Nicht zuletzt benötigen wir eine Seitenübergreifende Suche.
+Nicht zuletzt benötigen wir eine seitenübergreifende Suche.
 Strg+F reicht für eine einzelne Seite aus, für eine Dokumentations-Site benötigen wir etwas ausgefeilteres.
 
 === Static Site Generator (SSG)
@@ -80,7 +80,7 @@ Antora ist mit Node.js realisiert.
 
 Jekyll liegt in der Beliebtheit knapp vor HUGO (gemessen an den GitHub-Sternchen).
 Out of the Box wird MarkDown unterstützt.
-Das Asciidoctor-Projekt stellt {url-1}[ein Plugin] zur Verfügung mit dem Jekyll nach einer kleinen Konfiguration auch sehr gut AsciiDoc unterstützt.
+Das Asciidoctor-Projekt stellt https://github.com/asciidoctor/jekyll-asciidocx[ein Plugin] zur Verfügung mit dem Jekyll nach einer kleinen Konfiguration auch sehr gut AsciiDoc unterstützt.
 Durch ein vielfältiges Angebot an Themes kommen Sie mit Jekyll schnell zu guten Ergebnissen.
 So ist z.B. unsere WebSite https://docs-as-co.de[docs-as-co.de] mit Jekyll und AsciiDoc aufgebaut.
 Jekyll ist, wie Asciidoctor, in Ruby geschrieben.
@@ -150,11 +150,10 @@ image::microsite.png[]
 
 === HTML Sanity Check
 
-Was machen wir jetzt mit unsere HTML Sanity Check?
-Er testet die fertige Seite und kann somit schlecht direkt von jBake in die Seite eingebettet werden.
-
-Für ejde Seite haben wir die Wahl der Tempalte-Engine in dem wir die Dateiendung wählen.
-Für den Test-Report gehen wir auch hier wieder auf HTML und embedden den Report, der erst nach der eigentlichen Site generiert wird, per iFrame.
+In der letzten Folge haben wir Ihnen gezeigt wie Sie Ihre generierten HTML-Dokumente mit HTML Sanity Check auf Fehler überprüfen können.
+Da diese Überprüfen _nach_ dem Generieren der Site durch jBake erfolgt, kann jBake den erstellten Report nicht mehr in die Webseite selbst einbetten.
+Auch hierfür haben wir eine Lösung in der Trickkiste, denn für jede Seite haben wir die Wahl der Template-Engine in dem wir die Dateiendung wählen.
+Wenn wir für den Test-Report HTML als Template-Engine wählen, dann können wir den Report einfach per iFrame einbinden.
 
 .tests.html
 [source,HTML]
@@ -162,9 +161,9 @@ Für den Test-Report gehen wir auch hier wieder auf HTML und embedden den Report
 include::../../src/site/content/tests/index.html[]
 ----
 
-Das ist nicht ganz perfekt, erfüllt aber durcchaus seinen Zweck.
+Das ist nicht ganz perfekt, erfüllt aber durchaus seinen Zweck.
 
-=== Blog
+=== Blog und Architecture Decision Records (ADRs)
 
 Zu guter Letzt wollen wir auch den Leser mit einzelnen Nachrichtenbeiträgen im Stil eines Blog auf dem Laufenden halten.
 Hier bringt jBake die nötige Funktionalität gleich mit.
@@ -177,9 +176,15 @@ Neue Artikel werden einfach als AsciiDoc mit einem Header für die Meta-Daten ve
 include::../../src/site/content/news/2019-05-02.adoc[tags=header]
 ----
 
+Wenn Sie nun im Verlauf Ihres Projekts Architekturentscheidungen treffen, schreiben Sie diese doch einfach als Blog-Beitrag und versehen sie mit einem entsprechenden Tag `ADR`.
+
+Damit findet jeder Projektbeteiligte schnell im Blog alle neuen Entscheidungen.
+
+Wenn Sie den Dateinamen des Beitrags nun auch noch nach dem Schema `ADR-0123...` bilden, dann können Sie all diese Beiträge leicht mit dem https://doctoolchain.github.io/docToolchain/#_collectincludes[`collectIncludes`-Task] von docToolchain einsammeln und automatisch in Kapitel 9: "Entwurfsentscheidungen" Ihrer https://arc42.org[arc42]-Dokumentation zufügen.
+
 === Suche
 
-In größeren AsciiDoc-Dokumenten lassen sich gut über die Suche des Browsers (strg+F) Begriffe finden.
+In größeren AsciiDoc-Dokumenten lassen sich über die Suche des Browsers (strg+F) Begriffe gut finden.
 Wird das Dokument über mehrere Navigationselemente verteilt und gibt es mehrere solcher Dokumente, ist strg+F nicht mehr ausreichend.
 Über tools wie https://lunrjs.com[Lunr.js] lässt sich auch auf einem statischen System eine Suche per JavaScript auf dem Client implementieren.
 Allerdings erzeugen Sie damit eine Dokumentations-Insel.
