@@ -18,6 +18,7 @@ repositories {
 
 //tag::jbakeconfig[]
 jbake {
+    version = '2.6.4'
     srcDirName = 'src/site'
     destDirName = 'docs/html5/site'
     configuration['asciidoctor.option.requires'] = "asciidoctor-diagram"
