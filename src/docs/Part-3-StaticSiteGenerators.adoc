@@ -80,7 +80,7 @@ Antora ist mit Node.js realisiert.
 
 Jekyll liegt in der Beliebtheit knapp vor HUGO (gemessen an den GitHub-Sternchen).
 Out of the Box wird MarkDown unterstützt.
-Das Asciidoctor-Projekt stellt https://github.com/asciidoctor/jekyll-asciidocx[ein Plugin] zur Verfügung mit dem Jekyll nach einer kleinen Konfiguration auch sehr gut AsciiDoc unterstützt.
+Das Asciidoctor-Projekt stellt https://github.com/asciidoctor/jekyll-asciidoc[ein Plugin] zur Verfügung mit dem Jekyll nach einer kleinen Konfiguration auch sehr gut AsciiDoc unterstützt.
 Durch ein vielfältiges Angebot an Themes kommen Sie mit Jekyll schnell zu guten Ergebnissen.
 So ist z.B. unsere WebSite https://docs-as-co.de[docs-as-co.de] mit Jekyll und AsciiDoc aufgebaut.
 Jekyll ist, wie Asciidoctor, in Ruby geschrieben.
