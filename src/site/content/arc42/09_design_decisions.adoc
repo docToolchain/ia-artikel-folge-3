@@ -1,0 +1,10 @@
+:jbake-type: page_toc
+:jbake-title: 9. Entwurfsentscheidungen
+:jbake-status: published
+
+:imagesdir: ../images
+
+:toc: left
+
+:srcfolder: ../../..
+include::{srcfolder}/docs/arc42/kapitel/09_design_decisions.adoc[]

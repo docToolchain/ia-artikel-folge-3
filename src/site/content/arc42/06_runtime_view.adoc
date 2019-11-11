@@ -1,0 +1,10 @@
+:jbake-type: page_toc
+:jbake-title: 6. Laufzeitsicht
+:jbake-status: published
+
+:imagesdir: ../images
+
+:toc: left
+
+:srcfolder: ../../..
+include::{srcfolder}/docs/arc42/kapitel/06_runtime_view.adoc[]
