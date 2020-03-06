@@ -7,17 +7,17 @@ ifndef::imagesdir[:imagesdir: images]
 
 == Docs-As-Code - Alles unter einem Dach
 
-In der https://www.informatik-aktuell.de/entwicklung/methoden/docs-as-code-die-grundlagen.html[ersten Folge] dieser Artikelreihe haben wir Ihnen den Docs-as-Code Ansatz erläutert.
+In der https://www.informatik-aktuell.de/entwicklung/methoden/docs-as-code-die-grundlagen.html[ersten Folge] dieser Artikelreihe haben wir Ihnen den Docs-as-Code-Ansatz erläutert.
 In der https://www.informatik-aktuell.de/entwicklung/methoden/docs-as-code-die-werkzeuge.html[zweiten Folge] haben wir Ihnen gezeigt, wie Sie durch Automatisierung weitere Build-Schritte erzeugen, die Ihnen die Dokumentation erleichtern.
 
 Dabei lag unser Fokus immer auf einem einzelnen Dokument.
 Die Dokumentation Ihres Teams wird hingegen aus einer Vielzahl unterschiedlicher Dokumente bestehen.
-Die offentsichtlichen sind die Architekturdokumentation, ein Benutzerhandbuch und ein Entwicklerhandbuch.
+Die offensichtlichen sind die Architekturdokumentation, ein Benutzerhandbuch und ein Entwicklerhandbuch.
 Betrachtet man andere Systeme, so spielt auch immer eine Landingpage als Einstieg in das System und ein Blog für aktuelle Informationen eine große Rolle.
 
-Ein Menü zur einfachen Navigation bildet schliesslich die Klammer um all diese Dokumente (siehe <<diagramm1>>).
+Ein Menü zur einfachen Navigation bildet schließlich die Klammer um all diese Dokumente (siehe <<diagramm1>>).
 
-In diesem Artikel zeigen wir Ihnen, wie Sie mit Hilfe eines Static Site Generators  alle benötigten Dokumente unter ein Dach bringen und eine Micro-Site für Ihr System bauen.
+In diesem Artikel zeigen wir Ihnen, wie Sie mit Hilfe eines Static-Site-Generators alle benötigten Dokumente unter ein Dach bringen und eine Microsite für Ihr System bauen.
 
 [[diagramm1]]
 .Alle Dokumente unter einem Dach
@@ -27,7 +27,7 @@ include::ppt/slides.pptx.ad[tags=components]
 
 Bevor wir uns der eigentlichen Lösung zuwenden, sollten wir zumindest grob die Anforderungen skizziert haben.
 
-Die meisten oben aufgeführten Dokumente können wir mit dem schon besprochenen Docs-as-Code Ansatz prima erzeugen. Wir benötigen also ein System, welches den Docs-as-Code Ansatz mit AsciiDoc unterstützt.
+Die meisten oben aufgeführten Dokumente können wir mit dem schon besprochenen Docs-as-Code-Ansatz prima erzeugen. Wir benötigen also ein System, welches den Docs-as-Code-Ansatz mit AsciiDoc unterstützt.
 
 Beim Schreiben mit AsciiDoc steht der Content im Vordergrund, nicht das Layout und die Optik.
 Eine Landingpage muss jedoch optisch ansprechend aufgebaut sein.
@@ -35,19 +35,19 @@ Das System muss also z.B. reines HTML für möglichst viel Freiheit bei der Gest
 
 Und auch ein Blog hat spezielle Anforderungen. So benötigt ein Blog nicht nur die Darstellung der einzelnen Artikel (was in AsciiDoc sehr gut geht), sondern auch eine Auflistung aller Artikel nach Datum oder nach Kategorien/Tags.
 
-Dokumentieren wir eine Bibliothek, die in mehreren Versionen produktiv im Einsatz ist, so muss auch unsere Dokumentation dem Rechung tragen und in allen unterstützten Versionen vorliegen.
+Dokumentieren wir eine Bibliothek, die in mehreren Versionen produktiv im Einsatz ist, so muss auch unsere Dokumentation dem Rechnung tragen und in allen unterstützten Versionen vorliegen.
 
 Nicht zuletzt benötigen wir eine seitenübergreifende Suche.
 Strg+F reicht für eine einzelne Seite aus, für eine Dokumentations-Site benötigen wir etwas ausgefeilteres.
 
-=== Static Site Generator (SSG)
+=== Static-Site-Generator (SSG)
 
-Sie können alle oben genannten Anforderungen mit einem Static Site Generator lösen.
+Sie können alle oben genannten Anforderungen mit einem Static-Site-Generator lösen.
 Die statische Seite bietet dabei den Vorteil, dass sie selbst keine Anforderungen an ein spezielles Hosting mitbringt und durch die fehlende Dynamik sehr schnell ist.
-Sie besteht einfach nur aus statischen HTML Seiten, die sogar aus einem lokalen Verzeichnis aufgerufen werden können.
+Sie besteht einfach nur aus statischen HTML-Seiten, die sogar aus einem lokalen Verzeichnis aufgerufen werden können.
 
 Der Generator kümmert sich dabei um die "Dynamik".
-Jedesmal, wenn Sie eine Änderung an Ihrer Site vornehmen, kümmert er sich um das korrekte Einhängen Ihrer Dokumente in die Navigation, Verknüpfung von Seitenelementen (z.B. ein kleines Autorenprofil für jeden Blog-Artikel) und die Neugenerierung von Übersichtsseiten.
+Jedes mal, wenn Sie eine Änderung an Ihrer Site vornehmen, kümmert er sich um das korrekte Einhängen Ihrer Dokumente in die Navigation, Verknüpfung von Seitenelementen (z.B. ein kleines Autorenprofil für jeden Blog-Artikel) und die Neugenerierung von Übersichtsseiten.
 
 Durch diese Neugenerierung bei jeder Änderung, die Sie von Ihrem Code ja kennen, wird ein dynamisches Blog zu einer statischen Site.
 
@@ -55,10 +55,10 @@ Dieser Ansatz macht Ihre Dokumentation auch extrem schnell, denn statische Seite
 
 === Die Wahl eines SSG
 
-Auf https://staticgen.com[staticgen.com] sind ca. 250 Static Site Generators mit ein paar Attributen aufgeführt.
-Genannt ist die Sprache der Implementierung und die Beliebtheit in GithUb-Sternchen.
+Auf https://staticgen.com[staticgen.com] sind ca. 250 Static-Site-Generatoren mit ein paar Attributen aufgeführt.
+Genannt ist die Sprache der Implementierung und die Beliebtheit in GitHub-Sternchen.
 Die Unterstützung des Markup-Typs ist nicht genannt, weshalb wir für Sie ein wenig recherchiert haben und zu der in <<ssgs>> gezeigten Auswahl gekommen sind.
-All diese SSGs unterstützen AsciiDoc und somit unseren Docs-as-Code Ansatz.
+All diese SSGs unterstützen AsciiDoc und somit unseren Docs-as-Code-Ansatz.
 
 ==== HUGO
 
@@ -69,11 +69,11 @@ Für ein reines Java-Projekt ist Hugo mit seiner Implementierung in Go allerding
 
 ====  Antora
 
-Antora ist nicht nur ein SSG, Antora bringt auch einen Git Client mit und kann somit Dokumentation aus verschiedenen Git-Repositories automatisch einsammeln und entsprechend der Versionstags in verschiedenen Versionen generieren.
+Antora ist nicht nur ein SSG, Antora bringt auch einen Git-Client mit und kann somit Dokumentation aus verschiedenen Git-Repositories automatisch einsammeln und entsprechend der Versionstags in verschiedenen Versionen generieren.
 Es ist das jüngste Projekt von Dan Allen, dem Kopf hinter Asciidoctor.
-Damit ist es nicht verwunderlich, dass die AsciiDoc Unterstützung perfekt ist.
-Die Leistungsfähigkeit hat Antora schon durch den Einsatz bei größeren Open Source projekten bewiesen.
-Eine Landing Page oder ein Blog unterstützt es jedoch nicht, so dass man diese Elemente durch andere Werkzeuge bei Bedarf abdecken müsste.
+Damit ist es nicht verwunderlich, dass die AsciiDoc-Unterstützung perfekt ist.
+Die Leistungsfähigkeit hat Antora schon durch den Einsatz bei größeren Open-Source-Projekten bewiesen.
+Eine Landingpage oder einen Blog unterstützt es jedoch nicht, so dass man diese Elemente durch andere Werkzeuge bei Bedarf abdecken müsste.
 Antora ist mit Node.js realisiert.
 
 ==== Jekyll
@@ -88,18 +88,18 @@ Jekyll ist, wie Asciidoctor, in Ruby geschrieben.
 ==== jBake
 
 {url-3}[jBake] scheint eher der unbekannte Champion zu sein, weshalb wir im Folgenden unseren Ansatz mit jBake detaillierter vorstellen werden.
-jBake unterstützt AsciiDoc direkt, ist als Command-Line-Tool, Maven und Gradle Plugin und als Library verfügbar.
-Durch die Unterstützung verschiedener Template-Engines (Freemarker, Groovy, Thymeleaf and Jade) ist jBake sehr flexibel.
+jBake unterstützt AsciiDoc direkt, ist als Command-Line-Tool, Maven- und Gradle-Plugin und als Library verfügbar.
+Durch die Unterstützung verschiedener Template-Engines (Freemarker, Groovy, Thymeleaf und Jade) ist jBake sehr flexibel.
 Für ein Java-Projekt ist der größte Vorteil wohl die Implementierung in Java und die perfekte Integration mit Maven und Gradle.
 
 [[ssgs]]
-.Ausgewählte Static Site Generators (Quelle: {url-2}[staticgen.com]
+.Ausgewählte Static-Site-Generatoren (Quelle: {url-2}[staticgen.com]
 include::ppt/slides.pptx.ad[tags=overview]
 
 === Umsetzung einer Site mit jBake
 
 In den ersten Teilen haben wir als Build-Tool schon Gradle verwendet.
-Da jBake über eine entsprechende Gradle Integration verfügt, ist die erste Umsetzung der Site trivial:
+Da jBake über eine entsprechende Gradle-Integration verfügt, ist die erste Umsetzung der Site trivial:
 
 [source,groovy]
 ----
@@ -110,13 +110,13 @@ Auch hier verwenden wir wieder Asciidoctor mit dem Diagram-Plugin um PlantUML f�
 
 Wenn Sie die ersten Teile der Folge aufmerksam verfolgt haben, wird Ihnen auffallen, dass wir in dieser Konfiguration `src/site` und nicht `src/docs` referenzieren.
 In der Praxis hat sich gezeigt, dass es durchaus Sinn macht, die Site von der eigentlichen Dokumentation zu trennen.
-So erstellen Sie z.B. Ihre arc42 Dokumentation klassisch mit einem Master-Template, welches alle Unterkapitel per `include` referenziert.
+So erstellen Sie z.B. Ihre arc42-Dokumentation klassisch mit einem Master-Template, welches alle Unterkapitel per `include` referenziert.
 Das Ergebnis ist ein großes Dokument.
 
 In der Site funktioniert die Navigation jedoch besser, wenn Sie jedes Kapitel in der Top-Level-Navigation einzeln aufführen.
 Über die Trennung von Dokumentation (`src/docs`) und Site (`src/site`) ist das kein Problem.
-Sie legen einfach - ähnlich wie das arc42 Master-Template - für jede Seite ein Dokument an, welches auf beliebige Fragmente Ihrer Dokumentation per `include` verweist.
-Durch diesen Ansatz bauen Sie die Struktur Ihrer Site getrennt von der Dokumentation auf und bekommen mehr flexibilität.
+Sie legen einfach - ähnlich wie das arc42-Master-Template - für jede Seite ein Dokument an, welches auf beliebige Fragmente Ihrer Dokumentation per `include` verweist.
+Durch diesen Ansatz bauen Sie die Struktur Ihrer Site getrennt von der Dokumentation auf und bekommen mehr Flexibilität.
 
 === Navigation
 
@@ -124,9 +124,9 @@ jBake kann sich über `./gradlew bakeInit` selbst initialisieren und so das ben�
 jBake unterstützt dabei verschiedene Template-Engines.
 Wir verwenden in dem Beispiel Groovy als Engine, da wir ja schon in der Java-Welt sind und auch in Gradle Groovy verwenden.
 Das Original-Template baut die Site-Navigation in HTML mit Twitter-Bootstrap auf.
-Da dies schnell unübersichtlich wird, haben wir das Template dank Groovy so umgeschrieben, daß die Navigation über eine Map definiert wird:
+Da dies schnell unübersichtlich wird, haben wir das Template dank Groovy so umgeschrieben, dass die Navigation über eine Map definiert wird:
 
-.Das Navigationsmenu
+.Das Navigationsmenü
 [source, groovy]
 ----
 include::../../src/site/templates/menu.gsp[tags=map]
@@ -134,17 +134,17 @@ include::../../src/site/templates/menu.gsp[tags=map]
 
 === Table of Contents (TOC)
 
-Das CSS von AsciiDoc verträgt sich sehr gut mit den Styles von Twitter Bootstrap.
-Allerdings sieht jBake keinen Table of Contents für die AsciiDoc-Seiten vor, so daß wir auch hier eine Anpassung vorgenommen haben.
+Das CSS von AsciiDoc verträgt sich sehr gut mit den Styles von Twitter-Bootstrap.
+Allerdings sieht jBake keinen Table of Contents für die AsciiDoc-Seiten vor, sodass wir auch hier eine Anpassung vorgenommen haben.
 Schnell sind dem `header.gsp`-Template ein paar CSS-Styles hinzugefügt und ein neues `page_toc.gsp`-Template angelegt.
 Wir können nun pro Seite wählen, ob wir einen TOC darstellen wollen oder nicht.
 
-=== Landing Page
+=== Landingpage
 
 AsciiDoc ist prima für technische Dokumentation.
 Für eine ansprechende Landingpage, die einen guten ersten Eindruck unseres Projekts vermitteln soll, gehen wir dann doch auf Plain-HTML zurück.
 Durch die Verwendung von Bootstrap fällt es leicht eine ansprechende Seite aufzubauen, die auch responsive ist und sich somit mobil wie auch auf dem Desktop als Aushängeschild eignet.
-Twitter Bootstrap hat an dieser Stelle den Vorteil des mittlerweile hohen Bekanntheitsgrads.
+Twitter-Bootstrap hat an dieser Stelle den Vorteil des mittlerweile hohen Bekanntheitsgrads.
 
 image::microsite.png[]
 
@@ -165,9 +165,9 @@ Das ist nicht ganz perfekt, erfüllt aber durchaus seinen Zweck.
 
 === Blog und Architecture Decision Records (ADRs)
 
-Zu guter Letzt wollen wir auch den Leser mit einzelnen Nachrichtenbeiträgen im Stil eines Blog auf dem Laufenden halten.
+Zu guter Letzt wollen wir auch den Leser mit einzelnen Nachrichtenbeiträgen im Stil eines Blogs auf dem Laufenden halten.
 Hier bringt jBake die nötige Funktionalität gleich mit.
-Neue Artikel werden einfach als AsciiDoc mit einem Header für die Meta-Daten versehen und in das Verzeichnis `site/news` legen.
+Neue Artikel werden einfach als AsciiDoc mit einem Header für die Meta-Daten versehen und in das Verzeichnis `site/news` gelegt.
 Über das Attribut `:jbake-tags:` vergeben Sie für jeden Blog-Eintrag Tags und jBake erstellt automatisch entsprechende Übersichtsseiten.
 
 .Blog-Header
@@ -184,14 +184,14 @@ Wenn Sie den Dateinamen des Beitrags nun auch noch nach dem Schema `ADR-0123...`
 
 === Suche
 
-In größeren AsciiDoc-Dokumenten lassen sich über die Suche des Browsers (strg+F) Begriffe gut finden.
-Wird das Dokument über mehrere Navigationselemente verteilt und gibt es mehrere solcher Dokumente, ist strg+F nicht mehr ausreichend.
+In größeren AsciiDoc-Dokumenten lassen sich über die Suche des Browsers (Strg+F) Begriffe gut finden.
+Wird das Dokument über mehrere Navigationselemente verteilt und gibt es mehrere solcher Dokumente, ist Strg+F nicht mehr ausreichend.
 Über tools wie https://lunrjs.com[Lunr.js] lässt sich auch auf einem statischen System eine Suche per JavaScript auf dem Client implementieren.
 Allerdings erzeugen Sie damit eine Dokumentations-Insel.
 Gerade im Unternehmenskontext möchten Sie Ihre Dokumentation auch über die zentrale Suche finden können.
 Die meisten Suchmaschinen unterstützen zu diesem Zweck eine Einschränkung der Suche auf die Domain der Website.
 
-Bei Google funtioniert das über den Parameter `site` im Suchfeld.
+Bei Google funktioniert das über den Parameter `site` im Suchfeld.
 So findet die Suchanfrage https://google.de/search?q=site%3Adocs-as-co.de+AsciiDoc[site:docs-as-co.de AsciiDoc] alle entsprechenden Dokumente auf unserer Website.
 
 Somit kann eine Suche mit einem einfachen Form-Tag in Ihre Microsite eingebunden werden.
@@ -206,13 +206,11 @@ Das vollständige Beispiel finden Sie wieder in unserem https://github.com/docTo
 
 == Fazit
 
-Nachdem Sie im ersten Teil die Grundlagen und im zweiten die Werkzeuge des Docs-as-Code Ansatzes kennengelehrnt haben, wissen Sie nun auch, wie sie die verschiedenen Teile Ihrer Dokumentation mit jBake zusammenführen können.
-jBake hat dabei unter Beweis gestellt, dass er sich hinter anderen Static-Site-Generatoren nicht zu verstecken braucht und den Ansprüchen geachsen ist.
-Im Gegenteil - in einem Java-Projekt bietet jBake eine pefekte Integration in Ihren Build.
+Nachdem Sie im ersten Teil die Grundlagen und im zweiten die Werkzeuge des Docs-as-Code-Ansatzes kennengelernt haben, wissen Sie nun auch, wie sie die verschiedenen Teile Ihrer Dokumentation mit jBake zusammenführen können.
+jBake hat dabei unter Beweis gestellt, dass er sich hinter anderen Static-Site-Generatoren nicht zu verstecken braucht und den Ansprüchen gewachsen ist.
+Im Gegenteil - in einem Java-Projekt bietet jBake eine perfekte Integration in Ihren Build.
 
 Noch mehr Informationen finden Sie auch auf https://docs-as-co.de[Docs-as-Co.de].
 In unserem https://github.com/docToolchain/ia-artikel-folge-3[Beispiel-Repository] finden Sie diesen Artikel (zusammen mit den beiden ersten) auch als Microsite umgesetzt.
 
-In diesem Sinne viel Erfolg mit dem Docs-as-Code Ansatz!
-
-
+In diesem Sinne viel Erfolg mit dem Docs-as-Code-Ansatz!
