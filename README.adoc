@@ -22,7 +22,7 @@ Wir möchten Dokumentation in der Softwareentwicklung von vielerlei typischen Sc
 * https://gradle.org/install[Gradle] installiert zu haben, hilft ungemein... Wir bevorzugen die Installation über http://sdkman.io/[sdkman], den großartigen Package-Manager.
 * Eine Shell/Kommandozeile/Terminal.
 
-Alternativ können Sie das Repository auch in gitpod.io öffnen, dann startet eine web basierte Entwicklungsumgebung:
+Alternativ können Sie das Repository auch in gitpod.io öffnen, dann startet eine web-basierte Entwicklungsumgebung:
 
 image:https://gitpod.io/button/open-in-gitpod.svg[link="https://gitpod.io#https://github.com/docToolchain/ia-artikel-folge-3", title="In Gitpod öffnen"]
 
@@ -70,24 +70,23 @@ auf und finden die generierte Website unter http://localhost:8080 .
 
 image::src/docs/images/microsite.png[]
 
-Hinter diesem Aufruf verbergen sich ein paar als default gesetzt Tasks:
+Hinter diesem Aufruf verbergen sich ein paar als default gesetzte Tasks:
 
 `clean`::
 alles bisher generierte wird gelöscht und von vorne angefangen
 `copyImages`::
 die Bilder der verschiedenen Artikel werden an die richtige Stelle verschoben
 `bake`::
-jBake baut die Micro-Site zusammen
+jBake baut die Microsite zusammen
 `htmlSanityCheck`::
-die generierte Micro-Site wird auf Fehler überprüft
+die generierte Microsite wird auf Fehler überprüft
 `copyReports`::
-der daraus entstandene Test-Report wird in den Verzeichnisbaum der Micro-Site kopiert.
+der daraus entstandene Test-Report wird in den Verzeichnisbaum der Microsite kopiert.
 `bakePreview`::
-jBake startet einen kleinen Webserver um das Ergebnis unter http://localhost:8080 zur Verfügung zu stellen.
+jBake startet einen kleinen Webserver, um das Ergebnis unter http://localhost:8080 zur Verfügung zu stellen.
 
 Viel Spass beim Experimentieren!
 
 Gernot & Ralf
 
 https://docs-as-co.de
-
